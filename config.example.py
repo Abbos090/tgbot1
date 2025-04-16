@@ -1,0 +1,1 @@
+TOKEN = "sizning telegram bot tokeningiz"
