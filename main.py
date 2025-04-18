@@ -7,7 +7,7 @@ from aiogram import Bot, Dispatcher, html, F
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
-from aiogram.types import Message
+from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 
 from config import TOKEN
 
@@ -17,9 +17,20 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
+    btn1 = KeyboardButton(text="salom")
+    btn2 = KeyboardButton(text="to'tiqush")
 
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [btn1, btn1],
+            [btn2]
+        ],
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        input_field_placeholder="Botdan mezza qilib foydalaning!!"
+    )
 
-    await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!")
+    await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!", reply_markup=keyboard)
 
 
 
